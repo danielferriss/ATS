@@ -35,3 +35,4 @@ def index():
     return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, interval=interval, length=length)
 
 if __name__ == '__main__':
+    app.run()
