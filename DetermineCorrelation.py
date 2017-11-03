@@ -5,8 +5,8 @@ import os
 from alpha_vantage.timeseries import TimeSeries
 import matplotlib.pyplot as plt
 
-ticker1 = "V"
-ticker2 = "DFS"
+ticker1 = "GS"
+ticker2 = "MS"
 time_interval = '15min'
 ts = TimeSeries(key='XP12DSLMVA2QP4MO', output_format='pandas')
 data, meta_data = ts.get_intraday(symbol = ticker1,interval=time_interval, outputsize='full')
