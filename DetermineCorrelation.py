@@ -15,10 +15,6 @@ stock2, meta_data = ts.get_intraday(symbol= ticker2,interval=time_interval, outp
 # print(data.describe())
 print(data['open'].corr(stock2['open']))
 
-
-file_name = "C:\\users\\anmol\\Documents\\DataFiles\\machinedata1.csv"
-data = pd.read_csv(file_name, header=None, names = ['Population','Profit'])
-
 #gets the first 5 vals
 data.head()
 
