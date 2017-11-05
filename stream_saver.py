@@ -13,7 +13,7 @@ class MyStreamListener(tweepy.StreamListener):
             with open(filename, 'a') as f:
                     writer = csv.writer(f)
                     writer.writerow([status.text, status.user.name, status.created_at, status.id])
-import csv
+
 #a = ['element','death','halloween'] this is just used as an example to call
 def stream_saver(search_terms, filename):
     myStreamListener = MyStreamListener()
