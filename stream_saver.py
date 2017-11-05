@@ -1,3 +1,6 @@
+#This algorithm opens a twitter stream for the given search_terms and appends them to a file.
+import tweepy
+import csv
 class MyStreamListener(tweepy.StreamListener):
     
     # This method will be called when new tweets come in
@@ -11,9 +14,9 @@ class MyStreamListener(tweepy.StreamListener):
                     writer = csv.writer(f)
                     writer.writerow([status.text, status.user.name, status.created_at, status.id])
 import csv
-a = ['element','death','halloween']
+#a = ['element','death','halloween'] this is just used as an example to call
 def stream_saver(search_terms, filename):
     myStreamListener = MyStreamListener()
     myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
     b = myStream.filter(track=search_terms, async=False)
-stream_saver(a, 'filename.csv')
+#stream_saver(a, 'filename.csv') 'filename.csv' is just a local file
