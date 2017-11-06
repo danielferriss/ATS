@@ -4,7 +4,8 @@
 #                                     firefox     #
 #   need to login first to your account           #
 #   can only change the tracks (cannot play a     #
-#           track without pushing play button)    #
+#           track without having the spotify      # 
+#           player already open.)                 #
 #                                                 #
 ###################################################
 
