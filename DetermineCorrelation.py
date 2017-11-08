@@ -18,8 +18,19 @@ print(data['open'].corr(stock2['open']))
 #gets the first 5 vals
 data.head()
 
+#cost function
+def calc_cost(stock1, stock2):
+    return data['open'].corr(stock2['open'])
+
 #gets descriptive stats
-data.describe()
+cost = 999999999999
+best = None
+for info in data:
+    if calc_cost(stock2, info) < cost:
+        best = info
+        cost = calc_cost(stock2, info)
+
+
 
 
 
