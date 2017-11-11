@@ -1,7 +1,10 @@
 from alpha_vantage.timeseries import TimeSeries
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 import sys
 import numpy as np
+import io
 
 ticker1 = 'msft'
 ticker2 = 'googl'
@@ -21,6 +24,13 @@ def stockchart(symbol1, symbol2):
     ax2.plot(data2, 'g')
     ax2.set_ylabel(symbol2.upper(), color = 'g')
     plt.title('Stock Graph of ' + symbol1.upper() + ' and ' + symbol2.upper())
+
+    canvas = FigureCanvas(fig)
+    output = io.BytesIO()
+    canvas.print_png(output)
+    response = make_response(output.getvalue())
+    reponse.mimetype = 'image/png'
+    return response
 
     plt.show()
     print(data.describe())
