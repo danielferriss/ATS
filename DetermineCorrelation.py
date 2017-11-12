@@ -5,6 +5,8 @@ import scipy.stats as sp
 import os
 from alpha_vantage.timeseries import TimeSeries
 import matplotlib.pyplot as plt
+import scipy.optimize as opt
+
 
 ticker1 = "VG"
 ticker2 = "BABA"
@@ -42,12 +44,22 @@ def calc_cost(stock1, stock2):
     cost = sp.chisquare(stock1, stock2)
     return cost
 
+
+    
+
 slopes1 = np.array(convert_to_slopes(numpyStock1))
 slopes2 = np.array(convert_to_slopes(numpyStock2))
 
 cost = calc_cost(slopes1, slopes2)
 #gets the first 5 vals
 data.head()
+
+#minimize cost (finding optimial time shift)
+def optimal_time_shift:
+    cost = calc_cost(slopes1, slopes2)
+    result =  opt.minimize(cost, slopes1)
+    return result
+    
 
 
 
