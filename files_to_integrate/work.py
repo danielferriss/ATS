@@ -1,3 +1,4 @@
+import pip
 from alpha_vantage.timeseries import TimeSeries
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
