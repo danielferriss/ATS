@@ -29,7 +29,7 @@ def stockchart(symbol1, symbol2):
 
     canvas = FigureCanvas(fig)
     output = io.BytesIO()
+    fig.tight_layout()
     canvas.print_png(output)
-    # response = output.getvalue()
     response = base64.b64encode(output.getvalue()).decode('ascii')
     return response

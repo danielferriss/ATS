@@ -83,3 +83,17 @@ form {
 	transform: translate(-50%, -50%);
 	border-radius: 10px;
 }
+
+#graph1 {
+	font-family: "Helvetica",Sans-Serif;
+	font-size: 1em;
+	text-decoration: none;
+	color: #ffffff;
+	background-color: rgba(0, 0, 0, .35);
+	padding: 20px 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+}
