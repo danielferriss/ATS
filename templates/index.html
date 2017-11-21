@@ -9,8 +9,10 @@
 <nav id="navMenu"></nav>
 <script src="{{url_for('static', filename='interactive.js')}}"></script>
 
-{% if ticker1 %}
-<h1>Correlation Between {{ ticker1 }} and {{ ticker2 }}</h1>
+{% if graph != None %}
+<div id = "graph1"> 
+	<img src= "data:image/png;base64,{{ graph }}" alt = "Graph should be here oops.">
+</div>
 
 {% else %}
 <div class="form">
