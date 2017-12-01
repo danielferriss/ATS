@@ -26,7 +26,11 @@ def stockchart(symbol1, symbol2):
     ax2.plot(data2, 'g')
     ax2.set_ylabel(symbol2.upper(), color = 'g')
     plt.title('Stock Graph of ' + symbol1.upper() + ' and ' + symbol2.upper())
-
+    ax1.locator_params(nbins=10, axis='x')
+    for tick in ax1.get_xticklabels():
+        tick.set_rotation(90)
+    
+    
     canvas = FigureCanvas(fig)
     output = io.BytesIO()
     fig.tight_layout()
