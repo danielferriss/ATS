@@ -14,8 +14,12 @@ time_interval = '1min'
 ts = TimeSeries(key='XP12DSLMVA2QP4MO', output_format='pandas')
 data, meta_data = ts.get_intraday(symbol = ticker1,interval=time_interval, outputsize='full')
 stock2, meta_data = ts.get_intraday(symbol= ticker2,interval=time_interval, outputsize='full')
-# print(stock2.describe())
-# print(data.describe())
+
+#filter out values before 10am because they mess up the data
+index_value = data.index
+hours = index_value.str[11:13]
+minutes = index_value.str[14:16]l
+df.ix[(hours == "09") & (30 <= minutes < 60)]
 
 a = ts.keys()
 
