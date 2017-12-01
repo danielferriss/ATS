@@ -62,24 +62,24 @@ def stockchart_1day(symbol1, symbol2):
 ################ 1 week function ################
 def stockchart_1week(symbol1, symbol2):
     # Make the interval be hourly
-    return graph(symbol1, symbol2, data, data2, meta_data)
+    return graph(symbol1, symbol2, data, data2, meta_data, ts)
 
 ################ 4 week function ################
 def stockchart_4week(symbol1, symbol2):
     # Make the interval be hourly
-    return graph(symbol1, symbol2, data, data2, meta_data)
+    return graph(symbol1, symbol2, data, data2, meta_data, ts)
 
 ################ 3 month function ################
 def stockchart_3month(symbol1, symbol2):
     # Make the interval be daily
-    return graph(symbol1, symbol2, data, data2, meta_data)
+    return graph(symbol1, symbol2, data, data2, meta_data, ts)
 
 ################ 1 year function ################
 def stockchart_1year(symbol1, symbol2):
     # Make the interval be daily
-    return graph(symbol1, symbol2, data, data2, meta_data)
+    return graph(symbol1, symbol2, data, data2, meta_data, ts)
 
 ################ 5 year function ################
 def stockchart_5year(symbol1, symbol2):
     # Make the interval be weekly
-    return graph(symbol1, symbol2, data, data2, meta_data)
+    return graph(symbol1, symbol2, data, data2, meta_data, ts)
