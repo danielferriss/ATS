@@ -8,15 +8,28 @@ import numpy as np
 import io
 from flask import make_response, send_file
 
-ticker1 = 'msft'
-ticker2 = 'googl'
-interval = '15min'
-length = '1day'
+################ Directs data to correct function based on length ################
+def stockchart(symbol1, symbol2, length):
+    if length is '1day':
+        return stockchart_1day(symbol1, symbol2)
 
-def stockchart(symbol1, symbol2):
-    ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
-    data, meta_data = ts.get_intraday(symbol=symbol1,interval='15min', outputsize='compact')
-    data2, meta_data = ts.get_intraday(symbol=symbol2,interval='15min', outputsize='compact')
+    if length is '1week':
+        return stockchart_1weekday(symbol1, symbol2)
+
+    if length is '4week':
+        return stockchart_4week(symbol1, symbol2)
+
+    if length is '3month':
+        return stockchart_3month(symbol1, symbol2)
+
+    if length is '1year':
+        return stockchart_1year(symbol1, symbol2)
+
+    if length is '5year':
+        return stockchart_5year(symbol1, symbol2)
+
+############### Graphs inputted data and encodes to return to site ################
+def graph(symbol1, symbol2, data, data2, meta_data):
     fig, ax1 = plt.subplots()
     ax1.plot(data, 'b')
     ax1.set_xlabel('Time(s)')
@@ -30,10 +43,41 @@ def stockchart(symbol1, symbol2):
     for tick in ax1.get_xticklabels():
         tick.set_rotation(90)
     
-    
     canvas = FigureCanvas(fig)
     output = io.BytesIO()
     fig.tight_layout()
     canvas.print_png(output)
     response = base64.b64encode(output.getvalue()).decode('ascii')
     return response
+
+################ 1 day function ################
+def stockchart_1day(symbol1, symbol2):
+    ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
+    data, meta_data = ts.get_intraday(symbol=symbol1,interval='15min', outputsize='compact')
+    data2, meta_data = ts.get_intraday(symbol=symbol2,interval='15min', outputsize='compact')
+    return graph(symbol1, symbol2, data, data2, meta_data)
+    
+################ 1 week function ################
+def stockchart_1week(symbol1, symbol2):
+    # Make the interval be hourly
+    return graph(symbol1, symbol2, data, data2, meta_data)
+
+################ 4 week function ################
+def stockchart_4week(symbol1, symbol2):
+    # Make the interval be hourly
+    return graph(symbol1, symbol2, data, data2, meta_data)
+
+################ 3 month function ################
+def stockchart_3month(symbol1, symbol2):
+    # Make the interval be daily
+    return graph(symbol1, symbol2, data, data2, meta_data)
+
+################ 1 year function ################
+def stockchart_1year(symbol1, symbol2):
+    # Make the interval be daily
+    return graph(symbol1, symbol2, data, data2, meta_data)
+
+################ 5 year function ################
+def stockchart_5year(symbol1, symbol2):
+    # Make the interval be weekly
+    return graph(symbol1, symbol2, data, data2, meta_data)

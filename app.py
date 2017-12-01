@@ -20,7 +20,7 @@ moment    = Moment(app)
 class TickerForm(FlaskForm):
     ticker1   = StringField(u'Ticker 1:', validators=[Required()])
     ticker2   = StringField(u'Ticker 2:', validators=[Required()])
-    length    = SelectField(u'Time Length:', choices=[('', ''),('1day', '1 day'), ('1week', '1 week'), ('2week', '2 weeks'), ('10week', '10 weeks'), ('1year', '1 year')])
+    length    = SelectField(u'Time Length:', choices=[('', ''),('1day', '1 day'), ('1week', '1 week'), ('4week', '4 weeks'), ('3month', '3 months'), ('1year', '1 year'), ('5year', '5 years')])
     submit    = SubmitField(u'Submit')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -34,7 +34,7 @@ def index():
         ticker1  = form.ticker1.data
         ticker2  = form.ticker2.data
         length   = form.length.data
-        graph    = stockchart(ticker1, ticker2)
+        graph    = stockchart(ticker1, ticker2, length)
         return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, length=length, graph = graph)
     return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, length=length, graph = graph)
 
