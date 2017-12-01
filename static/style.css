@@ -99,8 +99,9 @@ form {
 ********************************************************/
 #logo {
 	float: left;
+	display: block;
 	max-height: 20em;
-
+	padding: 20px 20px;
 }
 
 #algorithm {
@@ -114,9 +115,16 @@ form {
 	border-radius: 10px;
 }
 
-#algonews {
+.info {
 	font-family: "Helvetica",Sans-Serif;
-	font-size: 1em;
+	font-size: 2em;
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.headline {
+	font-family: "Helvetica",Sans-Serif;
+	font-size: 5em;
 	text-decoration: none;
 	color: #ffffff;
 }
