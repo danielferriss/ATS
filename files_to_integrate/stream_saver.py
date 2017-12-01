@@ -19,5 +19,5 @@ class MyStreamListener(tweepy.StreamListener):
 
 def stream_saver(stock1, stock2):
     myStreamListener = MyStreamListener()
-    myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
-    b = myStream.filter(track=[stock1, stock2], async=False)
+    twitter_stream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
+    relevant_lines = myStream.filter(track=[stock1, stock2], async=False)
