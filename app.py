@@ -72,7 +72,7 @@ def algorithm():
 
 @app.route('/news', methods=['GET', 'POST'])
 def news():
-    return render_template('news.html')
+    return render_template('news.html', ticker1 = 'GOOGL', ticker2 = 'MSFT')
 
 if __name__ == '__main__':
     app.run()

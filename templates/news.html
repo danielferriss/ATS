@@ -3,12 +3,23 @@
 <link rel = "stylesheet" href = "{{url_for('static', filename='style.css')}}">
 <body>
 
-<!-- NAVIGATION BAR -->
-<nav id="navMenu"></nav>
-<script src="{{url_for('static', filename='interactive.js')}}"></script>
+	<!-- NAVIGATION BAR -->
+	<nav id="navMenu"></nav>
+	<script src="{{url_for('static', filename='interactive.js')}}"></script>
+	<div id = "news"> 
+		<div class="headline"> 
+			Algorithm Construction
+		</div>
+		<img src= "{{url_for('static', filename='images/construction.jpg')}}" id = "logo">
+		<div class="info">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+		</div>
+<!-- 		<div id = "tweets">
+			<a class="twitter-timeline"  href="https://twitter.com/hashtag/StockMarket" data-widget-id="936734190682497024">#StockMarket Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div> -->
 
-<div id = "news"> 
-	
-</div>
+          
+	</div>
 </body>
 {% endblock %}
