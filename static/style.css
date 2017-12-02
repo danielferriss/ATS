@@ -120,7 +120,7 @@ form {
 	font-size: 1.8em;
 	text-decoration: none;
 	color: #ffffff;
-	padding: 15px;
+	padding: 15px 0px;
 }
 
 .headline {
@@ -128,8 +128,8 @@ form {
 	font-size: 5em;
 	text-decoration: none;
 	color: #ffffff;
-	border-top: solid white 4px;
-	border-bottom: solid white 4px;
+	border-top: solid white 1px;
+	border-bottom: solid white 1px;
 }
 
 /********************************************************
@@ -146,9 +146,36 @@ form {
 	max-height: 80%;
 }
 
-.tweets {
-	float: right;
-	display: block;
-	max-height: 10em;
+/********************************************************
+***********************TEAM PAGE************************
+********************************************************/
+#teamcontainer {
+	background-color: rgba(0, 0, 0, .35);
 	padding: 20px 20px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
+	max-height: 80%;
+}
+
+.person {
+	height: 25%;
+	width: 25%;
+}
+
+.person img {
+	height: auto;
+	width: 100%;
+	padding: 10px 10px;
+}
+
+.person p {
+	font-family: "Helvetica",Sans-Serif;
+	font-size: 1.25em;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 5px 0px;
+	text-align: center;
 }
