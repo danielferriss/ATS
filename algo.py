@@ -40,7 +40,7 @@ def graph(symbol1, symbol2, data, data2, meta_data, ts):
     ax2 = ax1.twinx()
     ax2.plot(data2, 'g')
     ax2.set_ylabel(symbol2.upper(), color = 'g')
-    plt.title('Stock Graph of ' + symbol1.upper() + ' and ' + symbol2.upper())
+    plt.title(symbol1.upper() + ' and ' + symbol2.upper())
     ax1.locator_params(nbins=10, axis='x')
     for tick in ax1.get_xticklabels():
         tick.set_rotation(90)
