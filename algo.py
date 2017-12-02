@@ -45,7 +45,7 @@ def graph(symbol1, symbol2, data, data2, meta_data, ts, title):
 	for tick in ax1.get_xticklabels():
 		tick.set_rotation(90)
 	
-	plt.show()
+	# plt.show()
 
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -62,8 +62,8 @@ def stockchart_1day(symbol1, symbol2):
 	data2, meta_data = ts.get_intraday(symbol=symbol2,interval='60min', outputsize='compact')
 	newdata1 = data1.drop(data1.index[0:59])
 	newdata2 = data2.drop(data2.index[0:59])
-	print (newdata1)
-	print (newdata2)
+	# print (newdata1)
+	# print (newdata2)
 	return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, '24 Hours')
 	
 ################ 1 week function ################

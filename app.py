@@ -83,7 +83,11 @@ def index():
         ticker2  = form.ticker2.data
         length   = form.length.data
         graph    = stockchart(ticker1, ticker2, length)
-        return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, length=length, graph = graph)
+        tickerlate = 'tickerlate'
+        tickerearly = 'tickerearly'
+        correlation = 'correlation'
+        offset = 'offset'
+        return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, length=length, graph = graph, tickerlate=tickerlate, tickerearly=tickerearly, correlation=correlation, offset=offset)
     return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, length=length, graph = graph)
 
 @app.route('/team', methods=['GET', 'POST'])
