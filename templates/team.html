@@ -6,7 +6,10 @@
 	<!-- NAVIGATION BAR -->
 	<nav id="navMenu"></nav>
 	<script src="{{url_for('static', filename='interactive.js')}}"></script>
-	<ul id = "teamcontainer">
+	<ul class = "infocontainer">
+		<div class="headline"> 
+			Team
+		</div>
 		<li class = "person">
 			<img src= "{{url_for('static', filename='images/daniel.jpg')}}">
 			<p>
@@ -45,6 +48,12 @@
 		</li>
 		<li class = "person">
 			<img src= "{{url_for('static', filename='images/anmol.jpg')}}">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit
+			</p>
+		</li>
+		<li class = "person">
+			<img src= "{{url_for('static', filename='images/ann.jpg')}}">
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit
 			</p>

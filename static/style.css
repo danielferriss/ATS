@@ -95,16 +95,9 @@ form {
 }
 
 /********************************************************
-*******************ALGORITHM PAGE************************
+*******************COMMON PAGE UTILS*********************
 ********************************************************/
-#logo {
-	float: left;
-	display: block;
-	max-height: 20em;
-	padding: 20px 20px;
-}
-
-#algorithm {
+.infocontainer {
 	background-color: rgba(0, 0, 0, .35);
 	padding: 20px 20px;
 	position: absolute;
@@ -113,14 +106,6 @@ form {
 	transform: translate(-50%, -50%);
 	border-radius: 10px;
 	max-height: 80%;
-}
-
-.info {
-	font-family: "Helvetica",Sans-Serif;
-	font-size: 1.8em;
-	text-decoration: none;
-	color: #ffffff;
-	padding: 15px 0px;
 }
 
 .headline {
@@ -132,34 +117,24 @@ form {
 	border-bottom: solid white 1px;
 }
 
-/********************************************************
-************************NEWS PAGE************************
-********************************************************/
-#news {
-	background-color: rgba(0, 0, 0, .35);
+.headlinepic {
+	float: left;
+	display: block;
+	max-height: 20em;
 	padding: 20px 20px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border-radius: 10px;
-	max-height: 80%;
+}
+
+.info {
+	font-family: "Helvetica",Sans-Serif;
+	font-size: 1.8em;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 15px 0px;
 }
 
 /********************************************************
 ***********************TEAM PAGE************************
 ********************************************************/
-#teamcontainer {
-	background-color: rgba(0, 0, 0, .35);
-	padding: 20px 20px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	border-radius: 10px;
-	max-height: 80%;
-}
-
 .person {
 	height: 25%;
 	width: 25%;
@@ -168,7 +143,7 @@ form {
 .person img {
 	height: auto;
 	width: 100%;
-	padding: 10px 10px;
+	padding: 10px 15px;
 }
 
 .person p {
@@ -176,6 +151,6 @@ form {
 	font-size: 1.25em;
 	text-decoration: none;
 	color: #ffffff;
-	padding: 5px 0px;
+	padding: 0px 10px;
 	text-align: center;
 }
