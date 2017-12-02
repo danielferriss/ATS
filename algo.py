@@ -110,5 +110,3 @@ def stockchart_5year(symbol1, symbol2):
 	data, meta_data = ts.get_intraday(symbol=symbol1,interval='15min', outputsize='compact')
 	data2, meta_data = ts.get_intraday(symbol=symbol2,interval='15min', outputsize='compact')
 	return graph(symbol1, symbol2, data, data2, meta_data, ts)
-
-stockchart_1day('GOOGL','AAPL')
