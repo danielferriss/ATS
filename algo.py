@@ -7,6 +7,7 @@ import base64
 import numpy as np
 import io
 from flask import make_response, send_file
+import pandas as pd
 
 ################ check whether or not the symbol is in the markets ###############
 def symbols():
@@ -20,7 +21,7 @@ def stockchart(symbol1, symbol2, length):
         return stockchart_1day(symbol1, symbol2)
     
     if length == '1week':
-        return stockchart_1weekday(symbol1, symbol2)
+        return stockchart_1week(symbol1, symbol2)
     
     if length == '4week':
         return stockchart_4week(symbol1, symbol2)
@@ -73,8 +74,6 @@ def graph(symbol1, symbol2, data, data2, meta_data, ts, title):
             label.set_visible(False)
         for label in ax1.xaxis.get_ticklabels()[3::4]:
             label.set_visible(False)
-
-    plt.show()
 
     canvas = FigureCanvas(fig)
     output = io.BytesIO()
