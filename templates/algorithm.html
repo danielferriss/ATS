@@ -15,7 +15,14 @@
 				<img src= "{{url_for('static', filename='images/logo.png')}}" class = "headlinepic" alt = "Logo should be here oops.">
 			</a>
 		<div class="info">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+			This site will take in two stock tickers and a length of time. With this input it will...<br>
+		    1. Query Alpha Vantage (a stock API) and get the data for the two stocks over the specified length of time.<br>
+    		2. Remove any data that both stocks don't have. Alpha Vantage will sometimes be missing data for random times.<br>
+    		3. Find if the stocks are correlated. The stock times will be shifted against each other to see if they are more correlated at a certain time offset.<br>
+		    4. Make and display a graph of the two stocks over the entire time period.<br>
+    		5. Make and display a graph of the two stocks over their most correlated length of time.<br>
+    		6. Display correlation and offset data.<br>
+    		Read more on our <a href="https://github.com/danielferriss/ATS">github</a>
 		</div>
 	</div>
 </div>
