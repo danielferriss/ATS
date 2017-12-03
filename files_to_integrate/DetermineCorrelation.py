@@ -59,7 +59,7 @@ cost = calc_cost(slopes1, slopes2)
 data.head()
 
 #minimize cost (finding optimial time shift)
-def optimal_time_shift:
+def optimal_time_shift():
     cost = calc_cost(slopes1, slopes2)
     result =  opt.minimize(cost, slopes1)
     return result
