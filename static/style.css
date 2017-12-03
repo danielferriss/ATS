@@ -171,6 +171,24 @@ form {
 	padding: 15px 0px;
 }
 
+/*link styling*/
+a:link {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #ffffff;
+}
+
+a:hover {
+	color: #aaaaaa;
+}
+
+a:active {
+	color: #aaaaaa;
+}
+
 /********************************************************
 ***********************TEAM PAGE************************
 ********************************************************/
