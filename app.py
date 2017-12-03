@@ -50,7 +50,7 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
-from wtforms.validators import Required
+from wtforms.validators import Required, AnyOf
 from flask_navigation import Navigation
 from algo import *       
 
@@ -66,8 +66,8 @@ moment    = Moment(app)
 choices   = [('', ''),('1day', '1 day'), ('1week', '1 week'), ('4week', '4 weeks'), ('3month', '3 months'), ('1year', '1 year'), ('5year', '5 years')]
 
 class TickerForm(FlaskForm):
-    ticker1   = StringField(u'Ticker 1:',    validators=[Required()])
-    ticker2   = StringField(u'Ticker 2:',    validators=[Required()])
+    ticker1   = StringField(u'Ticker 1:',    validators=[Required(), AnyOf(symbols(), message=u'Ticker 1 is not a valid symbol!')])
+    ticker2   = StringField(u'Ticker 2:',    validators=[Required(), AnyOf(symbols(), message=u'Ticker 2 is not a valid symbol!')])
     length    = SelectField(u'Time Length:', validators=[Required()], choices=choices)
     submit    = SubmitField(u'Submit')
 

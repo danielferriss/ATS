@@ -6,7 +6,15 @@ import sys
 import base64
 import numpy as np
 import io
+import pandas as pd
 from flask import make_response, send_file
+
+
+################ Checks if input is a stock ################
+def symbols():
+	s = pd.read_csv("files_to_integrate/readcolumn/symbols.csv")
+	s.columns = ["Symbol"]
+	return list(s.Symbol)
 
 ################ Directs data to correct function based on length ################
 def stockchart(symbol1, symbol2, length):

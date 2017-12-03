@@ -1,6 +1,6 @@
 body {
 	/*gets random image for background*/
-	background-image: url('https://picsum.photos/1920/1080?blur');
+	background-image: url('https://picsum.photos/1920/1080');
 	position: fixed;
 	top: 0;
 	left: 0;
