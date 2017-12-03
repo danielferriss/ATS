@@ -23,8 +23,28 @@ stock2.drop(['low'],    axis=1, inplace=True)
 stock2.drop(['close'],  axis=1, inplace=True)
 stock2.drop(['volume'], axis=1, inplace=True)
 
+index_value = stock1.index.tolist()
 
-print(stock1)
+values = stock1.open.tolist()
+
+stock1_dict = {}
+
+for i in range (0, len(index_value)):
+    stock1_dict[index_value[i]] = values[i]
+
+index_value = stock2.index.tolist()
+
+values = stock2.open.tolist()
+
+stock2_dict = {}
+
+for i in range (0, len(index_value)):
+    stock2_dict[index_value[i]] = values[i]
+
+shared_items = set(stock1_dict.keys()) & set(stock2_dict.keys())
+
+##### need to get rid of the uncommon (basically whats not in shared_items)a
+
 # common_days = pd.merge(stock1, stock2, how = 'inner', on = stock1.index)
 
 # print(common_days)
