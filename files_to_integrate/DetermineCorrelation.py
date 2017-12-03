@@ -18,7 +18,7 @@ stock2, meta_data = ts.get_intraday(symbol= ticker2,interval=time_interval, outp
 #filter out values before 10am because they mess up the data
 index_value = data.index
 hours = index_value.str[11:13]
-minutes = index_value.str[14:16]l
+minutes = index_value.str[14:16]
 df.ix[(hours == "09") & (30 <= minutes < 60)]
 
 a = ts.keys()
