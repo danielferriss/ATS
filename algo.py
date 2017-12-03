@@ -47,6 +47,18 @@ def graph(symbol1, symbol2, data, data2, meta_data, ts, title):
 	if title == '4 Weeks':
 		for label in ax1.xaxis.get_ticklabels()[1::2]:
 			label.set_visible(False)
+	if title == '3 Months' or title == '1 Year':
+		for label in ax1.xaxis.get_ticklabels()[1::3]:
+			label.set_visible(False)
+		for label in ax1.xaxis.get_ticklabels()[2::3]:
+			label.set_visible(False)
+	if title == '5 Years':
+		for label in ax1.xaxis.get_ticklabels()[1::4]:
+			label.set_visible(False)
+		for label in ax1.xaxis.get_ticklabels()[2::4]:
+			label.set_visible(False)
+		for label in ax1.xaxis.get_ticklabels()[3::4]:
+			label.set_visible(False)
 
 	plt.show()
 	
@@ -108,8 +120,10 @@ def stockchart_3month(symbol1, symbol2):
 	data2, meta_data = ts.get_daily(symbol=symbol2, outputsize='compact')
 	newdata1 = data1.drop(data1.index[0:36])
 	newdata2 = data2.drop(data2.index[0:36])
+	newnewdata1 = newdata1.drop(columns=['high', 'low','close','volume'])
+	newnewdata2 = newdata2.drop(columns=['high', 'low','close','volume'])
 	print(newdata1)
-	return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
+	return graph(symbol1, symbol2, newnewdata1, newnewdata2, meta_data, ts, title)
 
 ################ 1 year function ################
 def stockchart_1year(symbol1, symbol2):
@@ -120,17 +134,22 @@ def stockchart_1year(symbol1, symbol2):
 	data2, meta_data = ts.get_weekly(symbol=symbol2)
 	newdata1 = data1.drop(data1.index[0:len(data1.index) - 53])
 	newdata2 = data2.drop(data2.index[0:len(data2.index) - 53])
+	newnewdata1 = newdata1.drop(columns=['high', 'low','close','volume'])
+	newnewdata2 = newdata2.drop(columns=['high', 'low','close','volume'])
 	print(newdata1)
-	print(newdata2)
-	return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
+	return graph(symbol1, symbol2, newnewdata1, newnewdata2, meta_data, ts, title)
 
 ################ 5 year function ################
 def stockchart_5year(symbol1, symbol2):
-	# Make the interval be weekly
 	title = '5 Years'
 	ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
-	data, meta_data = ts.get_intraday(symbol=symbol1,interval='15min', outputsize='compact')
-	data2, meta_data = ts.get_intraday(symbol=symbol2,interval='15min', outputsize='compact')
-	return graph(symbol1, symbol2, data, data2, meta_data, ts)
+	data1, meta_data = ts.get_monthly(symbol=symbol1)
+	data2, meta_data = ts.get_monthly(symbol=symbol2)
+	newdata1 = data1.drop(data1.index[0:len(data1.index) - 62])
+	newdata2 = data2.drop(data2.index[0:len(data2.index) - 62])
+	newnewdata1 = newdata1.drop(columns=['high', 'low','close','volume'])
+	newnewdata2 = newdata2.drop(columns=['high', 'low','close','volume'])
+	print(newnewdata1)
+	return graph(symbol1, symbol2, newnewdata1, newnewdata2, meta_data, ts, title)
 
-stockchart_4week('GOOGL','AAPL')
+stockchart_5year('ADBE','NKE')
