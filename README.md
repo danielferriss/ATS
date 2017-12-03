@@ -13,6 +13,7 @@ This site will take in two stock tickers and a length of time. With this input i
 
 ### Built With
 Web Framework: [Flask](flask.pocoo.org), [wtforms](https://wtforms.readthedocs.io/en/latest/)
+
 Graphing and Data Manipulation: numpy, pandas, matplotlib, others
 
 ### Authors
