@@ -41,9 +41,14 @@ def graph(symbol1, symbol2, data, data2, meta_data, ts, title):
 	ax2.plot(data2, 'g')
 	ax2.set_ylabel(symbol2.upper(), color = 'g')
 	plt.title(symbol1.upper() + ' and ' + symbol2.upper() + ' (' + title + ')')
-	ax1.locator_params(nbins=16, axis='x')
 	for tick in ax1.get_xticklabels():
 		tick.set_rotation(90)
+
+	if title == '4 Weeks':
+		for label in ax1.xaxis.get_ticklabels()[1::2]:
+			label.set_visible(False)
+
+	plt.show()
 	
 	canvas = FigureCanvas(fig)
 	output = io.BytesIO()
@@ -85,9 +90,14 @@ def stockchart_4week(symbol1, symbol2):
 	ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
 	data1, meta_data = ts.get_daily(symbol=symbol1, outputsize='compact')
 	data2, meta_data = ts.get_daily(symbol=symbol2, outputsize='compact')
-	newdata1 = data1.drop(data1.index[0:78])
-	newdata2 = data2.drop(data2.index[0:78])
-	return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
+	newdata1 = data1.drop(data1.index[0:len(data1.index) - 23])
+	newdata2 = data2.drop(data2.index[0:len(data2.index) - 23])
+	newnewdata1 = newdata1.drop(columns=['high', 'low','close','volume'])
+	newnewdata2 = newdata2.drop(columns=['high', 'low','close','volume'])
+	for i in range(21, 1, -2):
+		newnewnewdata1 = newnewdata1.drop(newnewdata1.index[i])
+	print(newnewdata1)
+	return graph(symbol1, symbol2, newnewdata1, newnewdata2, meta_data, ts, title)
 
 ################ 3 month function ################
 def stockchart_3month(symbol1, symbol2):
@@ -123,4 +133,4 @@ def stockchart_5year(symbol1, symbol2):
 	data2, meta_data = ts.get_intraday(symbol=symbol2,interval='15min', outputsize='compact')
 	return graph(symbol1, symbol2, data, data2, meta_data, ts)
 
-stockchart_1week('GOOGL','AAPL')
+stockchart_4week('GOOGL','AAPL')
