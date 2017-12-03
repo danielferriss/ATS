@@ -125,10 +125,6 @@ def stockchart_4week(symbol1, symbol2):
     newdata1 = modify_data(newdata1)
     newdata2 = modify_data(newdata2)
     
-    for i in range(21, 1, -2):
-        newdata1 = newdata1.drop(newdata1.index[i])
-    
-    #print(newnewdata1)
     return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
 
 ################ 3 month function ################
