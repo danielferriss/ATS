@@ -176,5 +176,3 @@ def stockchart_5year(symbol1, symbol2):
     
     #print(newnewdata1)
     return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
-
-stockchart_5year('MSFT','NOK')
