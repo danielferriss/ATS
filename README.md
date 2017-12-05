@@ -9,7 +9,7 @@ This site will take in two stock tickers and a length of time. With this input i
 
 ### API 
 
-[Alpha Vantage](https://www.alphavantage.co/)
+[Alpha Vantage](https://www.alphavantage.co/) Do NOT use Alpha Vantage if you can get away from it. The data is wrong and missing very often.
 
 ### Built With
 Web Framework: [Flask](flask.pocoo.org), [wtforms](https://wtforms.readthedocs.io/en/latest/)
