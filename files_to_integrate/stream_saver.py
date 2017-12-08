@@ -1,22 +1,23 @@
-#This algorithm opens a twitter stream for the given search_terms and appends them to a file.
+consumer_key = 'KatYMh46agxOxPOosTZAlu7Gx'
+consumer_secret = 'CRFhThIBE3bgLkVem5BGOuwACeVUPPYVszjnpL10tqZF4nPVN9'
+access_token = '922936042570899456-ZSH2PirUXsKBSigj5yivZHodHo4xmPo'
+access_token_secret = 'dFCExwOFcBQlmwywoUGU2ROYt2iYxe6F9DtmvIYZN9Vbb'
+
+# Authenticate Tweepy
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 import tweepy
-import csv
 class MyStreamListener(tweepy.StreamListener):
-    
     # This method will be called when new tweets come in
     def on_status(self, status):
         if (('RT') not in status.text and ('RT @') not in status.text):
-            print(status.text)
-            print(status.user.name)
-            print(status.created_at)
-            print(status.id)
-            with open(filename, 'a') as f:
-                    writer = csv.writer(f)
-                    writer.writerow([status.text, status.user.name, status.created_at, status.id])
+                print(str(status.text))
+                
+            
 
-#a = ['element','death','halloween'] this is just used as an example to call
-def stream_saver(search_terms, filename):
+
+def stream_saver(stock1, stock2):
     myStreamListener = MyStreamListener()
-    myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
-    b = myStream.filter(track=search_terms, async=False)
-#stream_saver(a, 'filename.csv') 'filename.csv' is just a local file
+    twitter_stream = tweepy.Stream(auth = api.auth, listener=myStreamListener)
+    relevant_lines = myStream.filter(track=[stock1, stock2], async=False)
