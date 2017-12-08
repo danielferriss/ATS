@@ -88,7 +88,7 @@ def stockchart_1day(symbol1, symbol2):
     ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
     data1, meta_data = ts.get_intraday(symbol=symbol1,interval='60min', outputsize='compact')
     data2, meta_data = ts.get_intraday(symbol=symbol2,interval='60min', outputsize='compact')
-    print(data1)
+
     newdata1 = data1.drop(data1.index[0:59])
     newdata2 = data2.drop(data2.index[0:59])
     
@@ -176,5 +176,3 @@ def stockchart_5year(symbol1, symbol2):
     
     #print(newnewdata1)
     return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
-
-stockchart_5year('MSFT','NOK')

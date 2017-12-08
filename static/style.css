@@ -1,5 +1,6 @@
-body {
-	/*gets random image for background*/
+	display: flex;
+	align-items: center;
+	justify-content: center;	/*gets random image for background*/
 	background-image: url('https://picsum.photos/1920/1080');
 	position: fixed;
 	top: 0;
@@ -10,7 +11,7 @@ body {
 }
 
 .everything {
-	min-width: 2000px;
+	min-width: 500px;
 }
 
 /********************************************************
