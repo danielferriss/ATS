@@ -26,6 +26,33 @@ a = ts.keys()
 numpyStock1 = data['close'].as_matrix()
 numpyStock2 = stock2['close'].as_matrix()
 
+def fix_data(stock1, stock2):
+    stock1.drop(['high'],   axis=1, inplace=True)
+    stock1.drop(['low'],    axis=1, inplace=True)
+    stock1.drop(['close'],  axis=1, inplace=True)
+    stock1.drop(['volume'], axis=1, inplace=True)
+
+    stock2.drop(['high'],   axis=1, inplace=True)
+    stock2.drop(['low'],    axis=1, inplace=True)
+    stock2.drop(['close'],  axis=1, inplace=True)
+    stock2.drop(['volume'], axis=1, inplace=True)
+
+
+    stock1_index = stock1.index.tolist()
+    stock2_index = stock2.index.tolist()
+
+    shared_items = list(set(stock1_index).intersection(stock2_index))
+
+
+    for elem in stock1_index:
+        if elem not in shared_items:
+            stock1.drop(elem, inplace=True)
+
+    for elem in stock2_index:
+        if elem not in shared_items:
+            stock2.drop(elem, inplace=True)
+
+    return (stock1, stock2)
 
 def convert_to_slopes(arr_vals):
     slopes = []

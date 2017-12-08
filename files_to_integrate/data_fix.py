@@ -23,25 +23,40 @@ stock2.drop(['low'],    axis=1, inplace=True)
 stock2.drop(['close'],  axis=1, inplace=True)
 stock2.drop(['volume'], axis=1, inplace=True)
 
-index_value = stock1.index.tolist()
+# index_value = stock1.index.tolist()
 
-values = stock1.open.tolist()
+# values = stock1.open.tolist()
 
-stock1_dict = {}
+# stock1_dict = {}
 
-for i in range (0, len(index_value)):
-    stock1_dict[index_value[i]] = values[i]
+# for i in range (0, len(index_value)):
+#     stock1_dict[index_value[i]] = values[i]
 
-index_value = stock2.index.tolist()
+# index_value = stock2.index.tolist()
 
-values = stock2.open.tolist()
+# values = stock2.open.tolist()
 
-stock2_dict = {}
+# stock2_dict = {}
 
-for i in range (0, len(index_value)):
-    stock2_dict[index_value[i]] = values[i]
+# for i in range (0, len(index_value)):
+#     stock2_dict[index_value[i]] = values[i]
+stock1_index = stock1.index.tolist()
+stock2_index = stock2.index.tolist()
 
-shared_items = set(stock1_dict.keys()) & set(stock2_dict.keys())
+shared_items = list(set(stock1_index).intersection(stock2_index))
+
+
+for elem in stock1_index:
+	if elem not in shared_items:
+		stock1.drop(elem, inplace=True)
+
+for elem in stock2_index:
+	if elem not in shared_items:
+		stock2.drop(elem, inplace=True)
+
+
+print(stock1)
+print(stock2)
 
 ##### need to get rid of the uncommon (basically whats not in shared_items)a
 
