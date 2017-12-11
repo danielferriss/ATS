@@ -38,11 +38,10 @@ def stockchart(symbol1, symbol2, length):
         return stockchart_1day(symbol1, symbol2)
 
 def modify_data(data):
+    data.drop(['volume'], axis = 1, inplace = True)
+    data.drop(['open'], axis = 1, inplace = True)
     data.drop(['high'], axis = 1, inplace = True)
     data.drop(['low'], axis = 1, inplace = True)
-    data.drop(['close'], axis = 1, inplace = True)
-    data.drop(['volume'], axis = 1, inplace = True)
-    
     return data
 
 ############### Graphs inputted data and encodes to return to site ################
