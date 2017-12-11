@@ -173,6 +173,104 @@ def stockchart_5year(symbol1, symbol2):
     newdata1 = modify_data(newdata1)
     newdata2 = modify_data(newdata2)
     
-    #print(newnewdata1)
     return graph(symbol1, symbol2, newdata1, newdata2, meta_data, ts, title)
 
+################ Directs data to correct function based on length ################
+def get_data(symbol1, symbol2, length):
+    if length == '1day':
+        ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
+        data1, meta_data = ts.get_intraday(symbol=symbol1,interval='60min', outputsize='compact')
+        data2, meta_data = ts.get_intraday(symbol=symbol2,interval='60min', outputsize='compact')
+
+        # newdata1 = data1.drop(data1.index[0:59])
+        # newdata2 = data2.drop(data2.index[0:59])
+    
+        newdata1 = modify_data(newdata1)
+        newdata2 = modify_data(newdata2)
+        return find_shift(newdata1, newdata2)
+
+    
+    # if length == '1week':
+
+    
+    # if length == '4week':
+
+    
+    # if length == '3month':
+
+    
+    # if length == '1year':
+
+    
+    # if length == '5year':
+
+    # else:
+
+
+
+################ Determine Correlation ################
+def fix_data(stock1, stock2):
+    stock1_index = stock1.index.tolist()
+    stock2_index = stock2.index.tolist()
+
+    shared_items = list(set(stock1_index).intersection(stock2_index))
+
+
+    for elem in stock1_index:
+        if elem not in shared_items:
+            stock1.drop(elem, inplace=True)
+
+    for elem in stock2_index:
+        if elem not in shared_items:
+            stock2.drop(elem, inplace=True)
+
+    return (stock1, stock2)
+
+def convert_to_slopes(arr_vals):
+    slopes = []
+    prev = 0
+    next = 0
+    size = len(arr_vals)
+    for index in range(1, len(arr_vals) - 2, 1):
+        prev = arr_vals[index - 1]
+        next = arr_vals[index + 1]
+        slope = next - prev
+        if slope > 0:
+            slopes.append(1)
+        else:
+            slopes.append(-1)
+    return slopes
+
+
+#cost function
+def calc_cost(stock1, stock2):
+    cost = np.corrcoef(stock1, stock2)[0,1]
+    return abs(cost)
+
+def find_shift(stock1, stock2):
+    tuplea = fix_data(stock1, stock2)
+
+    numpyStock1 = tuplea[0].as_matrix()
+    numpyStock2 = tuplea[1].as_matrix()
+
+    slopes1 = np.array(convert_to_slopes(numpyStock1))
+    slopes2 = np.array(convert_to_slopes(numpyStock2))
+
+    cost = calc_cost(slopes1, slopes2)
+    #gets the first 5 vals
+    new_cost = calc_cost(slopes1, slopes2)
+    #gets descriptive stats
+    cost = -999999999999
+    best = None
+    first = None
+    second = None
+
+    length = len(slopes2)
+    for shift in range(round(length/2)):
+
+        new_cost = calc_cost(slopes2[shift:length-1], slopes1[0:length -1 - shift])
+        if new_cost > cost:
+            best = shift
+            cost = new_cost
+
+    return (best, cost)

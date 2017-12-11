@@ -67,11 +67,6 @@ def calc_cost(stock1, stock2):
     cost = np.corrcoef(stock1, stock2)[0,1]
     return abs(cost)
 
-
-    
-
-
-
 #minimize cost (finding optimial time shift)
 def optimal_time_shift():
     cost = calc_cost(slopes1, slopes2)

@@ -66,10 +66,14 @@ def index():
         #Makes graph from given
         graph    = stockchart(ticker1, ticker2, length)
         #These variables will be defined by the function anmol is writing
-        tickerlate = 'tickerlate'
-        tickerearly = 'tickerearly'
-        correlation = 'correlation'
-        offset = 'offset'
+
+
+        tickerlate = ticker1
+        tickerearly = ticker2
+
+        x = get_data(ticker1, ticker2, length)
+        correlation = x[0]
+        offset = x[1]
         return render_template('index.html', form=form, ticker1=ticker1, ticker2=ticker2, length=length, graph = graph, tickerlate=tickerlate, tickerearly=tickerearly, correlation=correlation, offset=offset)
     return render_template('index.html', form=form, graph = graph)
 
