@@ -65,7 +65,7 @@ def convert_to_slopes(arr_vals):
 #cost function
 def calc_cost(stock1, stock2):
     cost = np.corrcoef(stock1, stock2)[0,1]
-    return cost
+    return abs(cost)
 
 
     
@@ -105,16 +105,23 @@ cost = calc_cost(slopes1, slopes2)
 #gets the first 5 vals
 new_cost = calc_cost(slopes1, slopes2)
 #gets descriptive stats
-cost = 999999999999
+cost = -999999999999
 best = None
+first = None
+second = None
 
 length = len(slopes2)
-for shift in range(length -1):
-    if calc_cost(slopes2[shift:length-1], slopes1[0:length -1 - shift]) < cost:
-        best = shift
-        cost = calc_cost(slopes2[shift:length-1], slopes1[0:length -1]) < cost
+for shift in range(round(length/2)):
 
-print(shift)
+    new_cost = calc_cost(slopes2[shift:length-1], slopes1[0:length -1 - shift])
+    if new_cost > cost:
+        best = shift
+        cost = new_cost
+
+
+print(best)
+print(cost)
+
 
 
 
