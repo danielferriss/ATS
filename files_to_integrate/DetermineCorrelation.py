@@ -10,9 +10,9 @@ from pydoc import help
 from scipy.stats.stats import pearsonr
 
 
-ticker1 = "VG"
-ticker2 = "BABA"
-time_interval = '15min'
+ticker1 = "GOOGL"
+ticker2 = "MSFT"
+time_interval = '60min'
 ts = TimeSeries(key='XP12DSLMVA2QP4MO', output_format='pandas')
 data, meta_data = ts.get_intraday(symbol = ticker1,interval=time_interval, outputsize='full')
 stock2, meta_data = ts.get_intraday(symbol= ticker2,interval=time_interval, outputsize='full')
