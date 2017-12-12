@@ -190,34 +190,16 @@ def stockchart_5year(symbol1, symbol2):
 
 ################ Directs data to correct function based on length ################
 def get_data(symbol1, symbol2, length):
-    if length == '1day':
-        ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
-        data1, meta_data = ts.get_intraday(symbol=symbol1, interval='1min', outputsize='compact')
-        data2, meta_data = ts.get_intraday(symbol=symbol2, interval='1min', outputsize='compact')
+    ts = TimeSeries(key='QBGZM8IV1P2X2VJQ', output_format='pandas')
+    data1, meta_data = ts.get_intraday(symbol=symbol1, interval='1min', outputsize='compact')
+    data2, meta_data = ts.get_intraday(symbol=symbol2, interval='1min', outputsize='compact')
 
         # newdata1 = data1.drop(data1.index[0:59])
         # newdata2 = data2.drop(data2.index[0:59])
 
-        newdata1 = modify_data(data1)
-        newdata2 = modify_data(data2)
-        return find_shift(newdata1, newdata2)
-
-
-        # if length == '1week':
-
-
-        # if length == '4week':
-
-
-        # if length == '3month':
-
-
-        # if length == '1year':
-
-
-        # if length == '5year':
-
-        # else:
+    newdata1 = modify_data(data1)
+    newdata2 = modify_data(data2)
+    return find_shift(newdata1, newdata2)
 
 
 ################ Determine Correlation ################
@@ -286,4 +268,4 @@ def find_shift(stock1, stock2):
     return (best, cost)
 
 
-print(get_data("GOOGL", "MSFT", '1day'))
+# print(get_data("GOOGL", "MSFT", '1day'))
