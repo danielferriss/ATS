@@ -19,8 +19,3 @@ Graphing and Data Manipulation: numpy, pandas, matplotlib, others
 ### Authors
 * **Daniel Ferriss** - *Web and Algorithm* - [github](https://github.com/danielferriss)
 * **Divya Bhati** - *Graph and Algorithm* - [github](https://github.com/dbhati2)
-* **Anmol Nigam** - *Algorithm* - [github](https://github.com/ANiggy)
-* **Edward Park** - *Web and Algorithm* - [github](https://github.com/epark001)
-* **Jarrett Brunner** - *Algorithm* - [github](https://github.com/jarrettbrunner)
-* **Priyanka Dey** - *Graph and Algorithm* - [github](https://github.com/priyanka-dey)
-* **Teja Kotha** - *Algorithm* - [github](https://github.com/tkotha99)
